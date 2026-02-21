@@ -3,10 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FRUVEA | Shop</title>
+  <title>FRUVEA | Shop Smart Snacks</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">FRUVEA</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link is-active" href="shop.html">Shop</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Shop FRUVEA</h1>
+        <p>Select your category and explore all available products.</p>
+      </div>
+    </section>
+
+    <section class="shop-section">
+      <div class="container">
+        <div id="category-filters" class="filter-row" role="group" aria-label="Product categories"></div>
+        <div id="product-list" class="product-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 FRUVEA. Healthy snacks & powders.</p>
+    </div>
+  </footer>
+
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
 </body>

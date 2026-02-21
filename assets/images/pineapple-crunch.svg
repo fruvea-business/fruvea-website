@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Pineapple Crunch</title>
+  <desc id="desc">Pineapple crunch product placeholder art</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe7bf" />
+      <stop offset="100%" stop-color="#e6a84a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <circle cx="200" cy="160" r="140" fill="#f8cc78" opacity="0.8" />
+  <circle cx="1020" cy="760" r="220" fill="#d38b2f" opacity="0.6" />
+  <polygon points="590,300 640,170 690,300" fill="#3f7e46" />
+  <polygon points="650,305 705,150 760,305" fill="#2f6a3a" />
+  <rect x="500" y="300" width="260" height="240" rx="70" fill="#f4bd57" />
+  <path d="M520 350h220M520 410h220M520 470h220M560 320v210M620 320v210M680 320v210" stroke="#d8962c" stroke-width="10" />
+  <text x="600" y="660" text-anchor="middle" font-family="Verdana, sans-serif" font-size="70" font-weight="700" fill="#5d3308">FRUVEA</text>
+  <text x="600" y="750" text-anchor="middle" font-family="Verdana, sans-serif" font-size="84" font-weight="800" fill="#3c2206">Pineapple Crunch</text>
+</svg>

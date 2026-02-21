@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Amla Powder</title>
+  <desc id="desc">Amla powder product placeholder art</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0f5da" />
+      <stop offset="100%" stop-color="#adc565" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <circle cx="220" cy="180" r="150" fill="#c9d886" opacity="0.7" />
+  <circle cx="980" cy="760" r="225" fill="#8ca747" opacity="0.58" />
+  <rect x="430" y="260" width="340" height="360" rx="24" fill="#ffffff" opacity="0.88" />
+  <circle cx="560" cy="420" r="90" fill="#91af4c" />
+  <circle cx="640" cy="455" r="90" fill="#7f9f41" />
+  <path d="M602 305c25-30 60-30 85 0" stroke="#486b2c" stroke-width="12" fill="none" />
+  <text x="600" y="720" text-anchor="middle" font-family="Verdana, sans-serif" font-size="70" font-weight="700" fill="#3d5520">FRUVEA</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Verdana, sans-serif" font-size="84" font-weight="800" fill="#2f4217">Amla Powder</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Beetroot Powder</title>
+  <desc id="desc">Beetroot powder product placeholder art</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5dbe3" />
+      <stop offset="100%" stop-color="#bc5d7b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <circle cx="230" cy="180" r="145" fill="#d887a0" opacity="0.75" />
+  <circle cx="1000" cy="760" r="220" fill="#9d415f" opacity="0.55" />
+  <rect x="430" y="255" width="340" height="370" rx="24" fill="#ffffff" opacity="0.88" />
+  <circle cx="600" cy="430" r="130" fill="#a44362" />
+  <circle cx="600" cy="430" r="88" fill="#c86f8d" />
+  <path d="M560 292c10-40 70-40 80 0" stroke="#517d45" stroke-width="16" fill="none" />
+  <text x="600" y="720" text-anchor="middle" font-family="Verdana, sans-serif" font-size="70" font-weight="700" fill="#5d1f35">FRUVEA</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Verdana, sans-serif" font-size="84" font-weight="800" fill="#451627">Beetroot Powder</text>
+</svg>

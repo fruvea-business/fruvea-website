@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Moringa Powder</title>
+  <desc id="desc">Moringa powder product placeholder art</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0f2d8" />
+      <stop offset="100%" stop-color="#72a96f" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <circle cx="220" cy="170" r="150" fill="#9ac590" opacity="0.75" />
+  <circle cx="1020" cy="760" r="220" fill="#4f8450" opacity="0.58" />
+  <rect x="430" y="260" width="340" height="360" rx="24" fill="#ffffff" opacity="0.88" />
+  <circle cx="600" cy="430" r="120" fill="#4e844f" />
+  <path d="M600 330c30 55 30 145 0 200c-30-55-30-145 0-200z" fill="#8fc58f" />
+  <path d="M520 430c55-30 145-30 200 0c-55 30-145 30-200 0z" fill="#8fc58f" />
+  <text x="600" y="720" text-anchor="middle" font-family="Verdana, sans-serif" font-size="70" font-weight="700" fill="#224926">FRUVEA</text>
+  <text x="600" y="805" text-anchor="middle" font-family="Verdana, sans-serif" font-size="84" font-weight="800" fill="#19371d">Moringa Powder</text>
+</svg>
