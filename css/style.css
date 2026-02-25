@@ -90,17 +90,17 @@ h3 + p {
   align-items: center;
   color: var(--primary-green);
   display: inline-flex;
-  gap: 8px;
+  gap: 5px;
 }
 
 .logo-leaf {
   fill: none;
-  height: 0.8em;
+  height: 0.85em;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.9;
-  width: 0.8em;
+  width: 0.85em;
 }
 
 .logo-text {
@@ -108,7 +108,7 @@ h3 + p {
   font-family: "Avenir Next", "Nunito Sans", "Segoe UI", sans-serif;
   font-size: 1.02rem;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   line-height: 1;
 }
 
