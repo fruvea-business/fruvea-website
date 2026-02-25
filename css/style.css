@@ -79,10 +79,37 @@ h3 + p {
 }
 
 .brand {
+  align-items: center;
   color: var(--primary-green);
+  display: inline-flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.logo {
+  align-items: center;
+  color: var(--primary-green);
+  display: inline-flex;
+  gap: 8px;
+}
+
+.logo-leaf {
+  fill: none;
+  height: 0.8em;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+  width: 0.8em;
+}
+
+.logo-text {
+  color: var(--primary-green);
+  font-family: "Avenir Next", "Nunito Sans", "Segoe UI", sans-serif;
   font-size: 1.02rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  line-height: 1;
 }
 
 .site-nav {
