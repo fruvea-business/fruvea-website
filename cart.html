@@ -52,19 +52,51 @@
             </div>
 
             <section class="payment-section">
-              <h3>Complete Your Payment</h3>
+              <h3>Checkout</h3>
               <p class="amount-to-pay">Amount to Pay: <strong id="amount-to-pay">&#8377;0</strong></p>
               <p class="upi-id-line">UPI ID: <span id="upi-id">yourupi@bank</span></p>
-              <p class="payment-helper">After payment, return here and confirm.</p>
+              <p class="payment-helper">Fill your details and place your order on WhatsApp.</p>
 
               <div class="payment-actions">
                 <button id="pay-upi-btn" class="btn btn-primary" type="button">Proceed to UPI Payment</button>
-                <button id="payment-done-btn" class="btn btn-secondary" type="button">I've Completed Payment</button>
               </div>
               <div class="qr-fallback">
                 <img class="upi-qr-image" src="assets/upi-qr.png" alt="UPI QR code for FRUVEA payment">
                 <p class="qr-note">Scan if you're on desktop</p>
               </div>
+
+              <form id="checkout-form" class="checkout-form">
+                <label class="field-label" for="checkout-name">Full Name</label>
+                <input id="checkout-name" class="checkout-input" type="text" required autocomplete="name">
+
+                <label class="field-label" for="checkout-phone">Contact Number</label>
+                <input id="checkout-phone" class="checkout-input" type="tel" required inputmode="tel" autocomplete="tel">
+
+                <label class="field-label" for="checkout-address">Address</label>
+                <textarea id="checkout-address" class="checkout-textarea" required rows="3" autocomplete="street-address"></textarea>
+
+                <label class="field-label" for="checkout-email">Email (optional)</label>
+                <input id="checkout-email" class="checkout-input" type="email" autocomplete="email">
+
+                <fieldset class="payment-method-group">
+                  <legend class="field-label">Payment Method</legend>
+                  <label class="payment-method-option">
+                    <input type="radio" name="checkout-payment-method" value="UPI" checked>
+                    <span>UPI</span>
+                  </label>
+                  <label class="payment-method-option">
+                    <input type="radio" name="checkout-payment-method" value="COD">
+                    <span>Cash on Delivery (COD)</span>
+                  </label>
+                </fieldset>
+
+                <label class="clear-cart-option">
+                  <input id="clear-cart-after-order" type="checkbox">
+                  <span>Clear cart after opening WhatsApp</span>
+                </label>
+
+                <button id="place-order-btn" class="btn btn-secondary" type="submit">Place Order</button>
+              </form>
               <p id="payment-feedback" class="payment-feedback" aria-live="polite"></p>
             </section>
           </aside>

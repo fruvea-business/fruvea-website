@@ -10,7 +10,12 @@
   const amountToPayElement = document.getElementById("amount-to-pay");
   const upiIdElement = document.getElementById("upi-id");
   const payUpiButton = document.getElementById("pay-upi-btn");
-  const paymentDoneButton = document.getElementById("payment-done-btn");
+  const checkoutForm = document.getElementById("checkout-form");
+  const fullNameInput = document.getElementById("checkout-name");
+  const contactNumberInput = document.getElementById("checkout-phone");
+  const addressInput = document.getElementById("checkout-address");
+  const emailInput = document.getElementById("checkout-email");
+  const clearCartAfterOrderInput = document.getElementById("clear-cart-after-order");
   const paymentFeedbackElement = document.getElementById("payment-feedback");
 
   const whatsappNumber =
@@ -110,21 +115,52 @@
     });
   }
 
-  if (paymentDoneButton) {
-    paymentDoneButton.addEventListener("click", function () {
+  if (checkoutForm) {
+    checkoutForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
       const cartItems = readCart();
       if (!cartItems.length) {
         setPaymentFeedback("Your cart is empty.");
         return;
       }
 
+      if (!checkoutForm.checkValidity()) {
+        checkoutForm.reportValidity();
+        return;
+      }
+
       const totals = getTotals(cartItems);
-      const message = buildWhatsAppMessage(cartItems, totals.grandTotal);
+      const customerDetails = {
+        name: fullNameInput ? fullNameInput.value.trim() : "",
+        phone: contactNumberInput ? contactNumberInput.value.trim() : "",
+        address: addressInput ? addressInput.value.trim() : "",
+        email: emailInput ? emailInput.value.trim() : "",
+        paymentMethod: getSelectedPaymentMethod()
+      };
+      if (!customerDetails.name || !customerDetails.phone || !customerDetails.address) {
+        setPaymentFeedback("Please complete all required checkout fields.");
+        return;
+      }
+      const message = buildOrderWhatsAppMessage(
+        customerDetails,
+        cartItems,
+        totals.grandTotal
+      );
       const whatsappLink =
         "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
 
-      window.open(whatsappLink, "_blank", "noopener,noreferrer");
-      setPaymentFeedback("Opening WhatsApp with your order details.");
+      if (
+        clearCartAfterOrderInput &&
+        clearCartAfterOrderInput.checked &&
+        !saveCart([])
+      ) {
+        setPaymentFeedback("Order opened in WhatsApp, but cart clear failed.");
+      } else if (clearCartAfterOrderInput && clearCartAfterOrderInput.checked) {
+        renderCart();
+      }
+
+      window.location.href = whatsappLink;
     });
   }
 
@@ -212,35 +248,51 @@
     };
   }
 
-  function buildWhatsAppMessage(cartItems, grandTotal) {
+  function buildOrderWhatsAppMessage(customerDetails, cartItems, grandTotal) {
     const orderLines = cartItems
-      .map(function (item, index) {
+      .map(function (item) {
         const lineTotal = item.price * item.quantity;
         return (
-          (index + 1) +
-          ". " +
+          "- " +
           item.name +
-          " - " +
-          item.weight +
-          " x " +
+          " x" +
           item.quantity +
-          " = " +
+          " - " +
           formatPrice(lineTotal)
         );
       })
       .join("\n");
 
     return (
-      "Hello FRUVEA \uD83C\uDF3F\n\n" +
-      "I have completed payment via UPI.\n\n" +
+      "New Order Received\n\n" +
+      "Name: " +
+      customerDetails.name +
+      "\n" +
+      "Phone: " +
+      customerDetails.phone +
+      "\n" +
+      "Address: " +
+      customerDetails.address +
+      "\n" +
+      "Email: " +
+      (customerDetails.email || "Not provided") +
+      "\n\n" +
       "Order Details:\n" +
       orderLines +
       "\n\n" +
-      "Total Paid: " +
+      "Total: " +
       formatPrice(grandTotal) +
       "\n\n" +
-      "Please confirm my order."
+      "Payment Method: " +
+      customerDetails.paymentMethod
     );
+  }
+
+  function getSelectedPaymentMethod() {
+    const selectedMethodInput = document.querySelector(
+      'input[name="checkout-payment-method"]:checked'
+    );
+    return selectedMethodInput ? selectedMethodInput.value : "UPI";
   }
 
   function buildUpiDeepLink(grandTotal) {
