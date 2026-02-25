@@ -6,6 +6,7 @@
   }
 
   const actionsElement = document.getElementById("payment-return-actions");
+  const closeButton = document.getElementById("payment-return-close");
   const paidButton = document.getElementById("payment-return-yes");
   const issueButton = document.getElementById("payment-return-issue");
   const codButton = document.getElementById("payment-return-cod");
@@ -32,6 +33,12 @@
       if (utrInput) {
         utrInput.focus();
       }
+    });
+  }
+
+  if (closeButton) {
+    closeButton.addEventListener("click", function () {
+      hideModal();
     });
   }
 

@@ -767,11 +767,13 @@ h3 + p {
   gap: 0.88rem;
   max-width: 420px;
   padding: 1.2rem;
+  position: relative;
   width: min(100%, 420px);
 }
 
 .payment-return-modal h2 {
   font-size: 1.2rem;
+  padding-right: 1.8rem;
 }
 
 .payment-return-modal p {
@@ -786,6 +788,37 @@ h3 + p {
 
 .payment-return-actions .btn {
   width: 100%;
+}
+
+.payment-return-close {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--text-light);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 26px;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  position: absolute;
+  right: 0.72rem;
+  top: 0.72rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 26px;
+}
+
+.payment-return-close:hover {
+  background: rgba(47, 47, 47, 0.08);
+  color: var(--text-dark);
+}
+
+.payment-return-close:focus-visible {
+  outline: 2px solid rgba(216, 140, 74, 0.45);
+  outline-offset: 2px;
 }
 
 .payment-verification-section[hidden] {
