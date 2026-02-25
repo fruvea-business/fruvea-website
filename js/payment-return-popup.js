@@ -5,58 +5,82 @@
     return;
   }
 
+  const actionsElement = document.getElementById("payment-return-actions");
   const paidButton = document.getElementById("payment-return-yes");
   const issueButton = document.getElementById("payment-return-issue");
   const codButton = document.getElementById("payment-return-cod");
+  const verificationSection = document.getElementById("payment-verification-section");
+  const verificationForm = document.getElementById("payment-verification-form");
+  const utrInput = document.getElementById("utr-transaction-id");
   const whatsappNumber =
     typeof WHATSAPP_NUMBER !== "undefined" ? WHATSAPP_NUMBER : "919945377147";
 
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+      maybeShowPaymentModal();
+    }
+  });
+
   if (paidButton) {
     paidButton.addEventListener("click", function () {
-      window.alert("Thank you! We will verify shortly.");
-      hideModal();
+      if (actionsElement) {
+        actionsElement.setAttribute("hidden", "hidden");
+      }
+      if (verificationSection) {
+        verificationSection.removeAttribute("hidden");
+      }
+      if (utrInput) {
+        utrInput.focus();
+      }
     });
   }
 
   if (issueButton) {
     issueButton.addEventListener("click", function () {
-      const message =
-        "Hello FRUVEA \uD83C\uDF3F\n" +
-        "Payment Not Working. Please help me complete my order.";
+      const message = "Payment is not going through. Please assist.";
       const link =
         "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
       window.open(link, "_blank", "noopener,noreferrer");
-      hideModal();
     });
   }
 
   if (codButton) {
     codButton.addEventListener("click", function () {
-      window.alert("Order changed to Cash on Delivery");
+      window.alert("Order switched to Cash on Delivery");
+      clearPaymentFlag();
       hideModal();
     });
   }
 
-  let paymentInProgress = false;
-  try {
-    paymentInProgress = localStorage.getItem(PAYMENT_FLAG_KEY) === "true";
-  } catch (error) {
-    paymentInProgress = false;
+  if (verificationForm) {
+    verificationForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!verificationForm.checkValidity()) {
+        verificationForm.reportValidity();
+        return;
+      }
+
+      window.alert("Payment details submitted for verification");
+      clearPaymentFlag();
+      hideModal();
+    });
   }
 
-  if (!paymentInProgress) {
-    return;
-  }
+  maybeShowPaymentModal();
 
-  showModal();
-
-  try {
-    localStorage.removeItem(PAYMENT_FLAG_KEY);
-  } catch (error) {
-    /* no-op */
+  function maybeShowPaymentModal() {
+    if (document.visibilityState !== "visible" || !hasPaymentInProgress()) {
+      return;
+    }
+    showModal();
   }
 
   function showModal() {
+    if (overlayElement.classList.contains("is-visible")) {
+      return;
+    }
+    resetModalState();
     overlayElement.removeAttribute("hidden");
     overlayElement.classList.add("is-visible");
     if (paidButton) {
@@ -67,5 +91,34 @@
   function hideModal() {
     overlayElement.classList.remove("is-visible");
     overlayElement.setAttribute("hidden", "hidden");
+    resetModalState();
+  }
+
+  function resetModalState() {
+    if (actionsElement) {
+      actionsElement.removeAttribute("hidden");
+    }
+    if (verificationSection) {
+      verificationSection.setAttribute("hidden", "hidden");
+    }
+    if (verificationForm) {
+      verificationForm.reset();
+    }
+  }
+
+  function hasPaymentInProgress() {
+    try {
+      return localStorage.getItem(PAYMENT_FLAG_KEY) === "true";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function clearPaymentFlag() {
+    try {
+      localStorage.removeItem(PAYMENT_FLAG_KEY);
+    } catch (error) {
+      /* no-op */
+    }
   }
 })();

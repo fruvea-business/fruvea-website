@@ -788,6 +788,49 @@ h3 + p {
   width: 100%;
 }
 
+.payment-verification-section[hidden] {
+  display: none;
+}
+
+.payment-verification-section {
+  border-top: 1px solid var(--border-faint);
+  margin-top: 0.2rem;
+  padding-top: 0.9rem;
+}
+
+.payment-verification-form {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.payment-verification-input,
+.payment-screenshot-input {
+  background: #FFFFFF;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  color: var(--text-dark);
+  font: inherit;
+  min-height: 44px;
+  padding: 0.58rem 0.72rem;
+  width: 100%;
+}
+
+.payment-screenshot-input {
+  font-size: 0.9rem;
+  padding: 0.48rem 0.62rem;
+}
+
+.payment-verification-input:focus,
+.payment-screenshot-input:focus {
+  border-color: var(--primary-green);
+  outline: none;
+}
+
+.payment-verification-form .btn {
+  margin-top: 0.2rem;
+  width: 100%;
+}
+
 .site-footer {
   background: var(--background-soft);
   border-top: 1px solid var(--border-faint);

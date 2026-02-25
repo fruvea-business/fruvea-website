@@ -114,11 +114,22 @@
     <div class="payment-return-modal" role="dialog" aria-modal="true" aria-labelledby="payment-return-title">
       <h2 id="payment-return-title">Payment Confirmation</h2>
       <p>Have you completed the payment?</p>
-      <div class="payment-return-actions">
+      <div id="payment-return-actions" class="payment-return-actions">
         <button id="payment-return-yes" class="btn btn-primary" type="button">Yes, I Paid</button>
         <button id="payment-return-issue" class="btn btn-secondary" type="button">Payment Not Working</button>
         <button id="payment-return-cod" class="btn btn-secondary" type="button">Switch to Cash on Delivery</button>
       </div>
+      <section id="payment-verification-section" class="payment-verification-section" hidden>
+        <form id="payment-verification-form" class="payment-verification-form">
+          <label class="field-label" for="utr-transaction-id">UTR / Transaction ID</label>
+          <input id="utr-transaction-id" class="payment-verification-input" type="text" required placeholder="Enter UTR / Transaction ID">
+
+          <label class="field-label" for="payment-screenshot">Payment Screenshot (optional)</label>
+          <input id="payment-screenshot" class="payment-screenshot-input" type="file" accept="image/*">
+
+          <button id="payment-verification-submit" class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </section>
     </div>
   </div>
   <script src="js/cart-count.js" defer></script>
