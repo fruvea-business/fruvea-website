@@ -55,13 +55,15 @@
               <h3>Complete Your Payment</h3>
               <p class="amount-to-pay">Amount to Pay: <strong id="amount-to-pay">&#8377;0</strong></p>
               <p class="upi-id-line">UPI ID: <span id="upi-id">yourupi@bank</span></p>
-
-              <label class="field-label" for="upi-transaction-id">UPI Transaction ID</label>
-              <input id="upi-transaction-id" class="transaction-input" type="text" placeholder="Enter UPI transaction ID">
+              <p class="payment-helper">After payment, return here and confirm.</p>
 
               <div class="payment-actions">
-                <button id="copy-upi-btn" class="btn btn-secondary" type="button">Copy UPI ID</button>
-                <button id="payment-done-btn" class="btn btn-primary" type="button">I've Completed Payment</button>
+                <button id="pay-upi-btn" class="btn btn-primary" type="button">Pay via UPI</button>
+                <button id="payment-done-btn" class="btn btn-secondary" type="button">I've Completed Payment</button>
+              </div>
+              <div class="qr-fallback">
+                <img class="upi-qr-image" src="assets/upi-qr.png" alt="UPI QR code for FRUVEA payment">
+                <p class="qr-note">Scan if you're on desktop</p>
               </div>
               <p id="payment-feedback" class="payment-feedback" aria-live="polite"></p>
             </section>

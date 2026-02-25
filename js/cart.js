@@ -9,9 +9,8 @@
   const totalElement = document.getElementById("cart-total");
   const amountToPayElement = document.getElementById("amount-to-pay");
   const upiIdElement = document.getElementById("upi-id");
-  const copyUpiButton = document.getElementById("copy-upi-btn");
+  const payUpiButton = document.getElementById("pay-upi-btn");
   const paymentDoneButton = document.getElementById("payment-done-btn");
-  const transactionInput = document.getElementById("upi-transaction-id");
   const paymentFeedbackElement = document.getElementById("payment-feedback");
 
   const whatsappNumber =
@@ -81,21 +80,27 @@
     renderCart();
   });
 
-  if (copyUpiButton) {
-    copyUpiButton.addEventListener("click", function () {
-      const upiId = upiIdElement ? upiIdElement.textContent.trim() : "";
-      if (!upiId) {
+  if (payUpiButton) {
+    payUpiButton.addEventListener("click", function () {
+      const cartItems = readCart();
+      if (!cartItems.length) {
+        setPaymentFeedback("Your cart is empty.");
+        return;
+      }
+
+      const totals = getTotals(cartItems);
+      if (!Number.isFinite(totals.grandTotal) || totals.grandTotal <= 0) {
+        setPaymentFeedback("Unable to generate payment amount.");
+        return;
+      }
+
+      const upiLink = buildUpiDeepLink(totals.grandTotal);
+      if (!upiLink) {
         setPaymentFeedback("UPI ID unavailable.");
         return;
       }
 
-      copyTextToClipboard(upiId)
-        .then(function () {
-          setPaymentFeedback("UPI ID copied.");
-        })
-        .catch(function () {
-          setPaymentFeedback("Unable to copy automatically. Please copy manually.");
-        });
+      window.location.href = upiLink;
     });
   }
 
@@ -108,25 +113,12 @@
       }
 
       const totals = getTotals(cartItems);
-      const transactionId = transactionInput ? transactionInput.value.trim() : "";
-      const message = buildWhatsAppMessage(cartItems, totals.grandTotal, transactionId);
+      const message = buildWhatsAppMessage(cartItems, totals.grandTotal);
       const whatsappLink =
         "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
 
       window.open(whatsappLink, "_blank", "noopener,noreferrer");
       setPaymentFeedback("Opening WhatsApp with your order details.");
-
-      const shouldClearCart = window.confirm(
-        "Do you want to clear your cart now? Choose Cancel to keep it."
-      );
-      if (shouldClearCart) {
-        if (!saveCart([])) {
-          setPaymentFeedback("Unable to clear cart right now.");
-          return;
-        }
-        renderCart();
-        setPaymentFeedback("Cart cleared after confirmation.");
-      }
     });
   }
 
@@ -196,6 +188,9 @@
     if (amountToPayElement) {
       amountToPayElement.textContent = formattedTotal;
     }
+    if (payUpiButton) {
+      payUpiButton.setAttribute("data-upi-link", buildUpiDeepLink(totals.grandTotal));
+    }
   }
 
   function getTotals(cartItems) {
@@ -211,7 +206,7 @@
     };
   }
 
-  function buildWhatsAppMessage(cartItems, grandTotal, transactionId) {
+  function buildWhatsAppMessage(cartItems, grandTotal) {
     const orderLines = cartItems
       .map(function (item, index) {
         const lineTotal = item.price * item.quantity;
@@ -237,11 +232,28 @@
       "\n\n" +
       "Total Paid: " +
       formatPrice(grandTotal) +
-      "\n" +
-      "UPI Transaction ID: " +
-      (transactionId || "") +
       "\n\n" +
       "Please confirm my order."
+    );
+  }
+
+  function buildUpiDeepLink(grandTotal) {
+    const upiId = upiIdElement ? upiIdElement.textContent.trim() : "";
+    if (!upiId) {
+      return "";
+    }
+
+    const amount = Number(grandTotal);
+    const finalAmount = Number.isFinite(amount) ? amount.toFixed(2) : "0.00";
+    return (
+      "upi://pay?pa=" +
+      encodeURIComponent(upiId) +
+      "&pn=" +
+      encodeURIComponent("FRUVEA") +
+      "&am=" +
+      encodeURIComponent(finalAmount) +
+      "&cu=INR&tn=" +
+      encodeURIComponent("Fruvea Order Payment")
     );
   }
 
@@ -305,33 +317,6 @@
     if (paymentFeedbackElement) {
       paymentFeedbackElement.textContent = message;
     }
-  }
-
-  function copyTextToClipboard(text) {
-    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
-      return navigator.clipboard.writeText(text);
-    }
-
-    return new Promise(function (resolve, reject) {
-      try {
-        const tempInput = document.createElement("textarea");
-        tempInput.value = text;
-        tempInput.setAttribute("readonly", "readonly");
-        tempInput.style.position = "absolute";
-        tempInput.style.left = "-9999px";
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        const copied = document.execCommand("copy");
-        document.body.removeChild(tempInput);
-        if (copied) {
-          resolve();
-          return;
-        }
-        reject(new Error("Copy command rejected."));
-      } catch (error) {
-        reject(error);
-      }
-    });
   }
 
   function escapeHtml(value) {
