@@ -738,6 +738,56 @@ h3 + p {
   min-height: 1.2rem;
 }
 
+.payment-return-overlay[hidden] {
+  display: none;
+}
+
+.payment-return-overlay {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background: rgba(47, 47, 47, 0.45);
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+  z-index: 220;
+}
+
+.payment-return-overlay.is-visible {
+  display: flex;
+}
+
+.payment-return-modal {
+  background: #FFFFFF;
+  border: 1px solid var(--border-faint);
+  border-radius: 14px;
+  box-shadow: 0 18px 42px rgba(47, 47, 47, 0.16);
+  display: grid;
+  gap: 0.88rem;
+  max-width: 420px;
+  padding: 1.2rem;
+  width: min(100%, 420px);
+}
+
+.payment-return-modal h2 {
+  font-size: 1.2rem;
+}
+
+.payment-return-modal p {
+  line-height: 1.65;
+  margin-top: 0;
+}
+
+.payment-return-actions {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.payment-return-actions .btn {
+  width: 100%;
+}
+
 .site-footer {
   background: var(--background-soft);
   border-top: 1px solid var(--border-faint);
@@ -855,6 +905,11 @@ h3 + p {
   .cart-section {
     padding-bottom: 82px;
     padding-top: 58px;
+  }
+
+  .payment-return-modal {
+    border-radius: 12px;
+    padding: 1rem;
   }
 }
 

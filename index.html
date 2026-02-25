@@ -110,6 +110,18 @@
       <p>&copy; 2026 FRUVEA. Healthy snacks & powders.</p>
     </div>
   </footer>
+  <div id="payment-return-overlay" class="payment-return-overlay" hidden>
+    <div class="payment-return-modal" role="dialog" aria-modal="true" aria-labelledby="payment-return-title">
+      <h2 id="payment-return-title">Payment Confirmation</h2>
+      <p>Have you completed the payment?</p>
+      <div class="payment-return-actions">
+        <button id="payment-return-yes" class="btn btn-primary" type="button">Yes, I Paid</button>
+        <button id="payment-return-issue" class="btn btn-secondary" type="button">Payment Not Working</button>
+        <button id="payment-return-cod" class="btn btn-secondary" type="button">Switch to Cash on Delivery</button>
+      </div>
+    </div>
+  </div>
   <script src="js/cart-count.js" defer></script>
+  <script src="js/payment-return-popup.js" defer></script>
 </body>
 </html>

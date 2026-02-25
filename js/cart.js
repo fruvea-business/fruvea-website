@@ -100,6 +100,12 @@
         return;
       }
 
+      try {
+        localStorage.setItem("paymentInProgress", "true");
+      } catch (error) {
+        setPaymentFeedback("Unable to store payment status.");
+      }
+
       window.location.href = upiLink;
     });
   }
