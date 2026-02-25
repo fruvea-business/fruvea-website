@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FRUVEA | Your Cart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="cart-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FRUVEA home">
+        <div class="logo">
+          <svg class="logo-leaf" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M19 5c-5.2.3-8.6 2.3-10.9 5.3-2.6 3.4-3.6 7.5-3.6 9.7 1.8 0 5.7-.6 9.1-2.8 3.8-2.4 6.2-6.3 6.2-12.2z"></path>
+            <path d="M7.2 16.5c2.8-2.2 6.2-3.8 10.1-4.9"></path>
+          </svg>
+          <span class="logo-text">FRUVEA</span>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link is-active" href="cart.html">Cart <span class="cart-count" data-cart-count>0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Your Cart</h1>
+        <p>Review your selections, adjust quantities, and complete payment when ready.</p>
+      </div>
+    </section>
+
+    <section class="cart-section">
+      <div class="container">
+        <div class="cart-layout">
+          <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+          <aside class="cart-summary-card">
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong id="cart-subtotal">&#8377;0</strong>
+            </div>
+            <div class="summary-row total-row">
+              <span>Grand Total</span>
+              <strong id="cart-total">&#8377;0</strong>
+            </div>
+
+            <section class="payment-section">
+              <h3>Complete Your Payment</h3>
+              <p class="amount-to-pay">Amount to Pay: <strong id="amount-to-pay">&#8377;0</strong></p>
+              <p class="upi-id-line">UPI ID: <span id="upi-id">yourupi@bank</span></p>
+
+              <label class="field-label" for="upi-transaction-id">UPI Transaction ID</label>
+              <input id="upi-transaction-id" class="transaction-input" type="text" placeholder="Enter UPI transaction ID">
+
+              <div class="payment-actions">
+                <button id="copy-upi-btn" class="btn btn-secondary" type="button">Copy UPI ID</button>
+                <button id="payment-done-btn" class="btn btn-primary" type="button">I've Completed Payment</button>
+              </div>
+              <p id="payment-feedback" class="payment-feedback" aria-live="polite"></p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 FRUVEA. Healthy snacks & powders.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/cart-count.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</body>
+</html>
