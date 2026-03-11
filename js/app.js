@@ -14,7 +14,7 @@
       : function (amount) {
           return "\u20B9" + Number(amount).toLocaleString("en-IN");
         };
-  const categories = ["All", "Snacks", "Powders"];
+  const categories = ["All", "Crunches", "Powders"];
   let activeCategory = "All";
 
   function renderFilterButtons() {

@@ -11,7 +11,7 @@ const products = [
   {
     id: 1,
     name: "Banana Crunch",
-    category: "Snacks",
+    category: "Crunches",
     basePrice: 99,
     baseWeight: 50,
     image: "assets/images/banana-crunch/banana-crunch-front.png",
@@ -41,7 +41,7 @@ const products = [
   {
     id: 2,
     name: "Pineapple Crunch",
-    category: "Snacks",
+    category: "Crunches",
     basePrice: 120,
     baseWeight: 40,
     image: "assets/images/pineapple-crunch/pineapple-crunch-front.png",
@@ -71,7 +71,7 @@ const products = [
   {
     id: 6,
     name: "Amla Crunch",
-    category: "Snacks",
+    category: "Crunches",
     basePrice: 110,
     baseWeight: 50,
     image: "assets/images/amla-crunch/amla-crunch-front.png",
@@ -101,7 +101,7 @@ const products = [
   {
     id: 7,
     name: "Muskmelon Crunch",
-    category: "Snacks",
+    category: "Crunches",
     basePrice: 115,
     baseWeight: 50,
     image: "assets/images/muskmelon-crunch/muskmelon-crunch-front.png",
