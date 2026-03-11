@@ -69,6 +69,36 @@ const products = [
       "Tangy and vibrant pineapple bites with a satisfying crunch, crafted for quick energy and great flavor."
   },
   {
+    id: 6,
+    name: "Amla Crunch",
+    category: "Snacks",
+    basePrice: 110,
+    baseWeight: 50,
+    image: "assets/images/amla-crunch/amla-crunch-front.png",
+    images: [
+      {
+        src: "assets/images/amla-crunch/amla-crunch-front.png",
+        thumb: "assets/images/amla-crunch/amla-crunch-front-thumb.png",
+        alt: "Amla Crunch front pack",
+        label: "Front"
+      },
+      {
+        src: "assets/images/amla-crunch/amla-crunch-back.png",
+        thumb: "assets/images/amla-crunch/amla-crunch-back-thumb.png",
+        alt: "Amla Crunch back pack",
+        label: "Back"
+      },
+      {
+        src: "assets/images/amla-crunch/amla-crunch-top.png",
+        thumb: "assets/images/amla-crunch/amla-crunch-top-thumb.png",
+        alt: "Amla Crunch top view",
+        label: "Top"
+      }
+    ],
+    description:
+      "Tart, zesty amla bites with a clean crunch, perfect for quick refreshment or on-the-go snacking."
+  },
+  {
     id: 3,
     name: "Moringa Powder",
     category: "Powders",
