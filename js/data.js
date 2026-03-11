@@ -14,7 +14,24 @@ const products = [
     category: "Snacks",
     basePrice: 99,
     baseWeight: 50,
-    image: "assets/images/banana-crunch.svg",
+    image: "assets/images/banana-crunch/banana-crunch-front.png",
+    images: [
+      {
+        src: "assets/images/banana-crunch/banana-crunch-front.png",
+        alt: "Banana Crunch front pack",
+        label: "Front"
+      },
+      {
+        src: "assets/images/banana-crunch/banana-crunch-back.png",
+        alt: "Banana Crunch back pack",
+        label: "Back"
+      },
+      {
+        src: "assets/images/banana-crunch/banana-crunch-top.png",
+        alt: "Banana Crunch top view",
+        label: "Top"
+      }
+    ],
     description:
       "A naturally sweet, crispy banana snack for guilt-free munching during classes, work breaks, or travel."
   },

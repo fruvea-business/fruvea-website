@@ -55,10 +55,12 @@
     const weightOptionsMarkup = weightOptions.map(function (option) {
       return `<option value="${option.grams}">${option.label}</option>`;
     }).join("");
+    const galleryImages = getProductGalleryImages(item);
+    const galleryMarkup = buildGalleryMarkup(item, galleryImages);
 
     productDetailsElement.innerHTML = `
       <article class="product-detail">
-        <img class="product-detail-image" src="${item.image}" alt="${item.name}">
+        ${galleryMarkup}
         <div class="product-detail-content">
           <span class="badge">${item.category}</span>
           <h1>${item.name}</h1>
@@ -99,6 +101,7 @@
     weightSelect.addEventListener("change", refreshPricing);
     addToCartButton.addEventListener("click", addToCart);
     refreshPricing();
+    setupGallery(productDetailsElement);
   }
 
   function addToCart() {
@@ -208,5 +211,142 @@
         <a class="btn btn-secondary" href="shop.html">Go to Shop</a>
       </div>
     `;
+  }
+
+  function getProductGalleryImages(item) {
+    if (item && Array.isArray(item.images) && item.images.length) {
+      return item.images.filter(function (image) {
+        return image && typeof image.src === "string" && image.src.trim() !== "";
+      });
+    }
+
+    if (item && typeof item.image === "string" && item.image.trim() !== "") {
+      return [
+        {
+          src: item.image,
+          alt: item.name,
+          label: "Product"
+        }
+      ];
+    }
+
+    return [];
+  }
+
+  function buildGalleryMarkup(item, galleryImages) {
+    if (!galleryImages.length) {
+      return "";
+    }
+
+    const mainImage = galleryImages[0];
+    const mainImageMarkup = `
+      <figure class="product-gallery-main">
+        ${renderGalleryImage(mainImage, item.name, true)}
+      </figure>
+    `;
+
+    const thumbsMarkup =
+      galleryImages.length > 1
+        ? `
+          <div class="product-gallery-thumbs" role="list">
+            ${galleryImages
+              .map(function (image, index) {
+                return renderGalleryThumb(image, item.name, index === 0, index);
+              })
+              .join("")}
+          </div>
+        `
+        : "";
+
+    return `
+      <div class="product-detail-media">
+        <div class="product-gallery" data-gallery>
+          ${mainImageMarkup}
+          ${thumbsMarkup}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderGalleryImage(image, fallbackAlt, isPrimary) {
+    const altText = image.alt || fallbackAlt || "";
+    const src = image.src || "";
+    const srcset = image.srcset ? ` srcset="${image.srcset}"` : "";
+    const sizes = image.sizes ? ` sizes="${image.sizes}"` : "";
+    const loading = isPrimary ? ' loading="eager"' : ' loading="lazy"';
+    const fetchPriority = isPrimary ? ' fetchpriority="high"' : "";
+
+    return `<img class="product-gallery-image" data-gallery-main src="${src}" alt="${altText}"${srcset}${sizes}${loading} decoding="async"${fetchPriority}>`;
+  }
+
+  function renderGalleryThumb(image, fallbackAlt, isActive, index) {
+    const altText = image.alt || fallbackAlt || "";
+    const label = image.label ? image.label + " view" : "View " + (index + 1);
+    const thumbSrc = image.thumb || image.src || "";
+    const buttonClass = isActive ? "thumb-btn is-active" : "thumb-btn";
+    const pressedState = isActive ? "true" : "false";
+
+    return `
+      <button
+        class="${buttonClass}"
+        type="button"
+        data-gallery-thumb
+        data-image-src="${image.src || ""}"
+        data-image-alt="${altText}"
+        ${image.srcset ? `data-image-srcset="${image.srcset}"` : ""}
+        ${image.sizes ? `data-image-sizes="${image.sizes}"` : ""}
+        aria-pressed="${pressedState}"
+        aria-label="${label} of ${fallbackAlt}"
+      >
+        <img class="thumb-image" src="${thumbSrc}" alt="${altText}" loading="lazy" decoding="async">
+      </button>
+    `;
+  }
+
+  function setupGallery(container) {
+    const gallery = container.querySelector("[data-gallery]");
+    if (!gallery) {
+      return;
+    }
+
+    const mainImage = gallery.querySelector("[data-gallery-main]");
+    const thumbButtons = Array.from(gallery.querySelectorAll("[data-gallery-thumb]"));
+
+    if (!mainImage || !thumbButtons.length) {
+      return;
+    }
+
+    thumbButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const nextSrc = button.getAttribute("data-image-src");
+        if (!nextSrc) {
+          return;
+        }
+        const nextAlt = button.getAttribute("data-image-alt") || "";
+        const nextSrcset = button.getAttribute("data-image-srcset");
+        const nextSizes = button.getAttribute("data-image-sizes");
+
+        mainImage.setAttribute("src", nextSrc);
+        mainImage.setAttribute("alt", nextAlt);
+
+        if (nextSrcset) {
+          mainImage.setAttribute("srcset", nextSrcset);
+        } else {
+          mainImage.removeAttribute("srcset");
+        }
+
+        if (nextSizes) {
+          mainImage.setAttribute("sizes", nextSizes);
+        } else {
+          mainImage.removeAttribute("sizes");
+        }
+
+        thumbButtons.forEach(function (thumb) {
+          const isActive = thumb === button;
+          thumb.classList.toggle("is-active", isActive);
+          thumb.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+      });
+    });
   }
 })();

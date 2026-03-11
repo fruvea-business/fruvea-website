@@ -55,7 +55,7 @@
       .map(function (product) {
         return `
           <article class="product-card">
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
             <div class="product-content">
               <span class="badge">${product.category}</span>
               <h2>${product.name}</h2>
