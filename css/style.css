@@ -1,5 +1,6 @@
 :root {
   --primary-green: #3E6B48;
+  --logo-green: #37523F;
   --accent-orange: #D88C4A;
   --background-soft: #F7F3ED;
   --text-dark: #2F2F2F;
@@ -80,7 +81,7 @@ h3 + p {
 
 .brand {
   align-items: center;
-  color: var(--primary-green);
+  color: var(--logo-green);
   display: inline-flex;
   flex-shrink: 0;
   white-space: nowrap;
@@ -88,23 +89,19 @@ h3 + p {
 
 .logo {
   align-items: center;
-  color: var(--primary-green);
+  color: var(--logo-green);
   display: inline-flex;
   gap: 5px;
 }
 
 .logo-leaf {
-  fill: none;
-  height: 0.85em;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.9;
-  width: 0.85em;
+  display: block;
+  height: 1.1em;
+  width: auto;
 }
 
 .logo-text {
-  color: var(--primary-green);
+  color: var(--logo-green);
   font-family: "Avenir Next", "Nunito Sans", "Segoe UI", sans-serif;
   font-size: 1.02rem;
   font-weight: 600;
