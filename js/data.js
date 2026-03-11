@@ -99,6 +99,36 @@ const products = [
       "Tart, zesty amla bites with a clean crunch, perfect for quick refreshment or on-the-go snacking."
   },
   {
+    id: 7,
+    name: "Muskmelon Crunch",
+    category: "Snacks",
+    basePrice: 115,
+    baseWeight: 50,
+    image: "assets/images/muskmelon-crunch/muskmelon-crunch-front.png",
+    images: [
+      {
+        src: "assets/images/muskmelon-crunch/muskmelon-crunch-front.png",
+        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-front-thumb.png",
+        alt: "Muskmelon Crunch front pack",
+        label: "Front"
+      },
+      {
+        src: "assets/images/muskmelon-crunch/muskmelon-crunch-back.png",
+        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-back-thumb.png",
+        alt: "Muskmelon Crunch back pack",
+        label: "Back"
+      },
+      {
+        src: "assets/images/muskmelon-crunch/muskmelon-crunch-top.png",
+        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-top-thumb.png",
+        alt: "Muskmelon Crunch top view",
+        label: "Top"
+      }
+    ],
+    description:
+      "Sweet, mellow muskmelon slices with a light crunch for refreshing snacking anytime."
+  },
+  {
     id: 3,
     name: "Moringa Powder",
     category: "Powders",
