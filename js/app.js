@@ -54,15 +54,14 @@
     productListElement.innerHTML = visibleProducts
       .map(function (product) {
         return `
-          <article class="product-card">
+          <a class="product-card" href="product.html?id=${product.id}">
             <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
             <div class="product-content">
               <span class="badge">${product.category}</span>
               <h2>${product.name}</h2>
               <p class="product-note">Starts from ${formatPrice(product.basePrice)} (${product.baseWeight}g)</p>
-              <a class="btn btn-secondary" href="product.html?id=${product.id}">View</a>
             </div>
-          </article>
+          </a>
         `;
       })
       .join("");

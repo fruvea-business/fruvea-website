@@ -440,6 +440,11 @@ h3 + p {
   transform: translateY(-2px);
 }
 
+.product-card:focus-visible {
+  outline: 2px solid rgba(216, 140, 74, 0.45);
+  outline-offset: 3px;
+}
+
 .product-card img {
   aspect-ratio: 4 / 3;
   object-fit: cover;
