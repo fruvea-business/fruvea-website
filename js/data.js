@@ -18,16 +18,19 @@ const products = [
     images: [
       {
         src: "assets/images/banana-crunch/banana-crunch-front.png",
+        thumb: "assets/images/banana-crunch/banana-crunch-front-thumb.png",
         alt: "Banana Crunch front pack",
         label: "Front"
       },
       {
         src: "assets/images/banana-crunch/banana-crunch-back.png",
+        thumb: "assets/images/banana-crunch/banana-crunch-back-thumb.png",
         alt: "Banana Crunch back pack",
         label: "Back"
       },
       {
         src: "assets/images/banana-crunch/banana-crunch-top.png",
+        thumb: "assets/images/banana-crunch/banana-crunch-top-thumb.png",
         alt: "Banana Crunch top view",
         label: "Top"
       }
@@ -41,7 +44,27 @@ const products = [
     category: "Snacks",
     basePrice: 120,
     baseWeight: 40,
-    image: "assets/images/pineapple-crunch.svg",
+    image: "assets/images/pineapple-crunch/pineapple-crunch-front.png",
+    images: [
+      {
+        src: "assets/images/pineapple-crunch/pineapple-crunch-front.png",
+        thumb: "assets/images/pineapple-crunch/pineapple-crunch-front-thumb.png",
+        alt: "Pineapple Crunch front pack",
+        label: "Front"
+      },
+      {
+        src: "assets/images/pineapple-crunch/pineapple-crunch-back.png",
+        thumb: "assets/images/pineapple-crunch/pineapple-crunch-back-thumb.png",
+        alt: "Pineapple Crunch back pack",
+        label: "Back"
+      },
+      {
+        src: "assets/images/pineapple-crunch/pineapple-crunch-top.png",
+        thumb: "assets/images/pineapple-crunch/pineapple-crunch-top-thumb.png",
+        alt: "Pineapple Crunch top view",
+        label: "Top"
+      }
+    ],
     description:
       "Tangy and vibrant pineapple bites with a satisfying crunch, crafted for quick energy and great flavor."
   },
