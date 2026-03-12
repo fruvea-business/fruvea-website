@@ -30,6 +30,12 @@ body {
   line-height: 1.72;
 }
 
+body.home-page {
+  background: var(--background-soft);
+  background-image: radial-gradient(rgba(47, 47, 47, 0.045) 0.6px, transparent 0.6px);
+  background-size: 24px 24px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -212,6 +218,18 @@ h3 + p {
   outline-offset: 2px;
 }
 
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .home-page .home-hero,
 .home-page .philosophy-section,
 .home-page .pillars-section,
@@ -222,50 +240,115 @@ h3 + p {
 }
 
 .home-page .home-hero {
-  background: var(--background-soft);
+  background:
+    linear-gradient(120deg, rgba(30, 47, 38, 0.78), rgba(30, 47, 38, 0.4)),
+    url("../assets/images/hero-lpi.png") center / cover no-repeat;
   border-bottom: 1px solid var(--border-faint);
-  padding-bottom: 120px;
-  padding-top: 130px;
+  min-height: 70vh;
+  padding: 140px 0 130px;
+  position: relative;
 }
 
-.home-page .home-hero-inner {
-  margin: 0 auto;
-  max-width: 760px;
-  text-align: center;
+.home-page .home-hero-content {
+  max-width: 560px;
+  text-align: left;
+  color: #FFFFFF;
+}
+
+.home-page .hero-eyebrow {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.home-page .hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+}
+
+.home-page .metric-chip {
+  background: #FFFFFF;
+  border: 1px solid var(--border-faint);
+  border-radius: 999px;
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
 }
 
 .home-page .home-hero h1 {
+  color: #FFFFFF;
   font-size: clamp(2.2rem, 6vw, 4.4rem);
   line-height: 1.08;
 }
 
 .home-page .home-hero-subtext {
+  color: rgba(255, 255, 255, 0.86);
   font-size: clamp(1.04rem, 2.2vw, 1.34rem);
   line-height: 1.8;
-  margin: 1rem auto 0;
-  max-width: 36ch;
-}
-
-.home-page .home-hero-micro {
-  font-size: 0.98rem;
-  line-height: 1.78;
-  margin: 0.95rem auto 0;
-  max-width: 58ch;
+  margin: 1rem 0 0;
+  max-width: 40ch;
 }
 
 .home-page .hero-actions {
   display: flex;
   gap: 0.72rem;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 1.55rem;
+}
+
+.home-page .scroll-indicator {
+  align-items: flex-start;
+  border: 1px solid rgba(47, 47, 47, 0.3);
+  border-radius: 999px;
+  bottom: 24px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  left: 50%;
+  padding-top: 6px;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 22px;
+}
+
+.home-page .scroll-indicator span {
+  animation: scroll-dot 1.8s infinite;
+  background: var(--text-dark);
+  border-radius: 999px;
+  height: 8px;
+  width: 4px;
 }
 
 .home-page .scroll-cue {
   color: var(--text-light);
-  font-size: 0.79rem;
-  letter-spacing: 0.06em;
-  margin-top: 1.05rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  margin-top: 2.6rem;
+  text-align: center;
   text-transform: uppercase;
+}
+
+@keyframes scroll-dot {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
 }
 
 .home-page .philosophy-section {
@@ -302,7 +385,14 @@ h3 + p {
   background: #FFFFFF;
   border: 1px solid var(--border-faint);
   border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(47, 47, 47, 0.06);
   padding: 1.45rem 1.2rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-page .pillar-item:hover {
+  box-shadow: 0 22px 40px rgba(47, 47, 47, 0.12);
+  transform: translateY(-6px);
 }
 
 .home-page .pillar-item h3 {
@@ -344,7 +434,14 @@ h3 + p {
   background: #FFFFFF;
   border: 1px solid var(--border-faint);
   border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(47, 47, 47, 0.06);
   padding: 1.2rem 1.1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-page .preview-item:hover {
+  box-shadow: 0 22px 40px rgba(47, 47, 47, 0.12);
+  transform: translateY(-6px);
 }
 
 .home-page .preview-item h3 {
@@ -1037,6 +1134,12 @@ h3 + p {
   }
 }
 
+@media (max-width: 980px) {
+  .home-page .home-hero {
+    padding: 120px 0 110px;
+  }
+}
+
 @media (max-width: 760px) {
   .header-inner {
     min-height: 68px;
@@ -1057,17 +1160,26 @@ h3 + p {
   }
 
   .home-page .home-hero {
-    padding-bottom: 92px;
-    padding-top: 108px;
+    padding-bottom: 110px;
+    padding-top: 104px;
   }
 
   .home-page .hero-actions {
     align-items: stretch;
     flex-direction: column;
+    justify-content: flex-start;
   }
 
   .home-page .hero-actions .btn {
     width: 100%;
+  }
+
+  .home-page .home-hero-content {
+    text-align: center;
+  }
+
+  .home-page .hero-actions {
+    justify-content: center;
   }
 
   .page-hero {
