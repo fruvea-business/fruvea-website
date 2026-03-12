@@ -33,6 +33,12 @@ const products = [
         thumb: "assets/images/banana-crunch/banana-crunch-top-thumb.png",
         alt: "Banana Crunch top view",
         label: "Top"
+      },
+      {
+        src: "assets/images/banana-crunch/banana-crunch-ingredient.png",
+        thumb: "assets/images/banana-crunch/banana-crunch-ingredient-thumb.png",
+        alt: "Banana Crunch ingredient angle",
+        label: "Ingredients"
       }
     ],
     description:
