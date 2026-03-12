@@ -99,6 +99,12 @@ const products = [
         thumb: "assets/images/amla-crunch/amla-crunch-top-thumb.png",
         alt: "Amla Crunch top view",
         label: "Top"
+      },
+      {
+        src: "assets/images/amla-crunch/amla-crunch-ingredient.png",
+        thumb: "assets/images/amla-crunch/amla-crunch-ingredient-thumb.png",
+        alt: "Amla Crunch ingredient angle",
+        label: "Ingredients"
       }
     ],
     description:
