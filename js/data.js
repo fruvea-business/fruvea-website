@@ -14,8 +14,14 @@ const products = [
     category: "Crunches",
     basePrice: 99,
     baseWeight: 50,
-    image: "assets/images/banana-crunch/banana-crunch-front.png",
+    image: "assets/images/banana-crunch/banana-crunch-ingredient.png",
     images: [
+      {
+        src: "assets/images/banana-crunch/banana-crunch-ingredient.png",
+        thumb: "assets/images/banana-crunch/banana-crunch-ingredient-thumb.png",
+        alt: "Banana Crunch ingredient angle",
+        label: "Ingredients"
+      },
       {
         src: "assets/images/banana-crunch/banana-crunch-front.png",
         thumb: "assets/images/banana-crunch/banana-crunch-front-thumb.png",
@@ -33,12 +39,6 @@ const products = [
         thumb: "assets/images/banana-crunch/banana-crunch-top-thumb.png",
         alt: "Banana Crunch top view",
         label: "Top"
-      },
-      {
-        src: "assets/images/banana-crunch/banana-crunch-ingredient.png",
-        thumb: "assets/images/banana-crunch/banana-crunch-ingredient-thumb.png",
-        alt: "Banana Crunch ingredient angle",
-        label: "Ingredients"
       }
     ],
     description:
@@ -50,8 +50,14 @@ const products = [
     category: "Crunches",
     basePrice: 120,
     baseWeight: 40,
-    image: "assets/images/pineapple-crunch/pineapple-crunch-front.png",
+    image: "assets/images/pineapple-crunch/pineapple-crunch-ingredient.png",
     images: [
+      {
+        src: "assets/images/pineapple-crunch/pineapple-crunch-ingredient.png",
+        thumb: "assets/images/pineapple-crunch/pineapple-crunch-ingredient-thumb.png",
+        alt: "Pineapple Crunch ingredient angle",
+        label: "Ingredients"
+      },
       {
         src: "assets/images/pineapple-crunch/pineapple-crunch-front.png",
         thumb: "assets/images/pineapple-crunch/pineapple-crunch-front-thumb.png",
@@ -80,8 +86,14 @@ const products = [
     category: "Crunches",
     basePrice: 110,
     baseWeight: 50,
-    image: "assets/images/amla-crunch/amla-crunch-front.png",
+    image: "assets/images/amla-crunch/amla-crunch-ingredient.png",
     images: [
+      {
+        src: "assets/images/amla-crunch/amla-crunch-ingredient.png",
+        thumb: "assets/images/amla-crunch/amla-crunch-ingredient-thumb.png",
+        alt: "Amla Crunch ingredient angle",
+        label: "Ingredients"
+      },
       {
         src: "assets/images/amla-crunch/amla-crunch-front.png",
         thumb: "assets/images/amla-crunch/amla-crunch-front-thumb.png",
@@ -99,12 +111,6 @@ const products = [
         thumb: "assets/images/amla-crunch/amla-crunch-top-thumb.png",
         alt: "Amla Crunch top view",
         label: "Top"
-      },
-      {
-        src: "assets/images/amla-crunch/amla-crunch-ingredient.png",
-        thumb: "assets/images/amla-crunch/amla-crunch-ingredient-thumb.png",
-        alt: "Amla Crunch ingredient angle",
-        label: "Ingredients"
       }
     ],
     description:
@@ -116,8 +122,14 @@ const products = [
     category: "Crunches",
     basePrice: 115,
     baseWeight: 50,
-    image: "assets/images/muskmelon-crunch/muskmelon-crunch-front.png",
+    image: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient.png",
     images: [
+      {
+        src: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient.png",
+        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient-thumb.png",
+        alt: "Muskmelon Crunch ingredient angle",
+        label: "Ingredients"
+      },
       {
         src: "assets/images/muskmelon-crunch/muskmelon-crunch-front.png",
         thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-front-thumb.png",
@@ -135,12 +147,6 @@ const products = [
         thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-top-thumb.png",
         alt: "Muskmelon Crunch top view",
         label: "Top"
-      },
-      {
-        src: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient.png",
-        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient-thumb.png",
-        alt: "Muskmelon Crunch ingredient angle",
-        label: "Ingredients"
       }
     ],
     description:
