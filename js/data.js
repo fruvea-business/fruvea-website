@@ -135,6 +135,12 @@ const products = [
         thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-top-thumb.png",
         alt: "Muskmelon Crunch top view",
         label: "Top"
+      },
+      {
+        src: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient.png",
+        thumb: "assets/images/muskmelon-crunch/muskmelon-crunch-ingredient-thumb.png",
+        alt: "Muskmelon Crunch ingredient angle",
+        label: "Ingredients"
       }
     ],
     description:
