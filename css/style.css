@@ -523,9 +523,9 @@ h3 + p {
 }
 
 .product-gallery-thumbs {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.65rem;
-  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
 }
 
 .thumb-btn {
@@ -534,6 +534,7 @@ h3 + p {
   border-radius: 12px;
   cursor: pointer;
   display: grid;
+  flex: 0 0 72px;
   padding: 0.45rem;
   place-items: center;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;

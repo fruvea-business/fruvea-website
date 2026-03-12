@@ -317,6 +317,16 @@
     }
 
     thumbButtons.forEach(function (button) {
+      const thumbImage = button.querySelector(".thumb-image");
+      if (thumbImage) {
+        thumbImage.addEventListener("error", function () {
+          const fallbackSrc = button.getAttribute("data-image-src");
+          if (fallbackSrc && thumbImage.getAttribute("src") !== fallbackSrc) {
+            thumbImage.setAttribute("src", fallbackSrc);
+          }
+        }, { once: true });
+      }
+
       button.addEventListener("click", function () {
         const nextSrc = button.getAttribute("data-image-src");
         if (!nextSrc) {
